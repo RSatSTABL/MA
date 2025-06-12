@@ -1,0 +1,46 @@
+<fmiModelDescription
+    fmiVersion="3.0"
+    modelName="StablModule_SOC_SOH"
+    instantiationToken="StablModule_SOC_SOH"
+    generationTool="make"
+    generationDateAndTime="2025-05-19T11:21:33+02:00"
+    description="FMU for the estimation of SOC and SOH of a battery"
+    copyright="© STABL Energy GmbH 2025">
+
+    <CoSimulation modelIdentifier="StablModule_SOC_SOH"/>
+    
+    <DefaultExperiment startTime="0.0" stopTime="10.0" tolerance="1e-4" stepSize="1.0" />
+    
+    <ModelVariables>
+        <Float64 name="i_mod_rms" valueReference="0" start="0" causality="input" variability="continuous"/>
+        <Float64 name="i_mod_avg" valueReference="1" start="0" causality="input" variability="continuous"/>
+        <Float64  name="u_bat" valueReference="2" start="0" causality="input" variability="continuous"/>
+        <Boolean  name="errReported" valueReference="3" causality="local" variability="discrete"/>
+        <Float64 name="soc" valueReference="4" causality="output" variability="continuous"/>
+        <Float64 name="soc_conf" valueReference="5" causality="output" variability="continuous"/>
+        <Float64 name="soh" valueReference="6" causality="output" variability="continuous"/>
+        <Float64 name="soh_conf" valueReference="7" causality="output" variability="continuous"/>
+        <Float64 name="i_mod_dr" valueReference="8" causality="output" variability="continuous">
+            <Dimension start="5"/>
+        </Float64>
+        
+        <Boolean name="dsbl_soc" valueReference="100" causality="parameter" variability="fixed" start="false"/>
+        <Boolean name="dsbl_dr" valueReference="101" causality="parameter" variability="fixed" start="false"/>
+
+        <Float64 name="time" valueReference="1000" causality="independent" variability="continuous"/>
+    </ModelVariables>
+
+    <ModelStructure>
+        <Output valueReference="4"/>
+        <Output valueReference="5"/>
+        <Output valueReference="6"/>
+        <Output valueReference="7"/>
+        <Output valueReference="8"/>
+        <InitialUnknown valueReference="4"/>
+        <InitialUnknown valueReference="5"/>
+        <InitialUnknown valueReference="6"/>
+        <InitialUnknown valueReference="7"/>
+        <InitialUnknown valueReference="8"/>
+    </ModelStructure>
+    
+</fmiModelDescription>
